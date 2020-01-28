@@ -3,13 +3,9 @@ package com.anncode.amazonviewer;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Scanner;
 
-import com.anncode.amazonviewer.model.Book;
-import com.anncode.amazonviewer.model.Chapter;
-import com.anncode.amazonviewer.model.Magazine;
-import com.anncode.amazonviewer.model.Movie;
-import com.anncode.amazonviewer.model.Serie;
+
+import com.anncode.amazonviewer.model.*;
 import com.anncode.makereport.Report;
 import com.anncode.util.AmazonUtil;
 
@@ -17,7 +13,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+			Film film  = new Movie("Django","Terror y acción", "Quentin Tarantino", 245, (short)2012);
+			film.view();
+			Film film2 = new Chapter("Dr. Who and the whovinas", "Fiction", "Whoooo the creator", 245, (short)199, 54 ,
+					new Serie("Dr.Who serie","Fiction","Taylor the creator",548,845) );
 		showMenu();
 
 	}
@@ -181,18 +180,7 @@ public class Main {
 			
 			if(response > 0) {
 				Chapter chapterSelected = chaptersOfSerieSelected.get(response-1);
-				chapterSelected.setViewed(true);
-				Date dateI = chapterSelected.startToSee(new Date());
-				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				//Termine de verla
-				chapterSelected.stopToSee(dateI, new Date());
-				System.out.println();
-				System.out.println("Viste: " + chapterSelected);
-				System.out.println("Por: " + chapterSelected.getTimeViewed() + " milisegundos");
+				chapterSelected.view();
 			}
 		}while(exit !=0);
 	}
@@ -223,18 +211,7 @@ public class Main {
 			
 			if(response > 0) {
 				Book bookSelected = books.get(response-1);
-				bookSelected.setReaded(true);
-				Date dateI = bookSelected.startToSee(new Date());
-				
-				for (int i = 0; i < 100000; i++) {
-					System.out.println("..........");
-				}
-				
-				//Termine de verla
-				bookSelected.stopToSee(dateI, new Date());
-				System.out.println();
-				System.out.println("Leíste: " + bookSelected);
-				System.out.println("Por: " + bookSelected.getTimeReaded() + " milisegundos");
+				bookSelected.view();
 			}
 			
 		}while(exit !=0);
